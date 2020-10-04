@@ -25,12 +25,8 @@ body {
     margin-top: 100px;
 }
 
-.dropdown-item:hover {
-    color: #d36305;
-}
-
 #mainNavbar .navbar-brand {
-    color: #f8b310;
+    color: #5cbf2a;
     font-size: 1.5rem;
     font-weight: 100;
 }
@@ -42,7 +38,7 @@ body {
     font-size: 1.5rem; 
 }
 #mainNavbar .nav-link:hover {
-    color: #f8b310;
+    color: #ea1c2c;
 }
 
 #headingGroup span{
@@ -52,6 +48,7 @@ body {
 #headingGroup h1{
     font-weight: 100;
     font-size: 4rem;
+
 }
 
 .navbar.scrolled {
@@ -84,4 +81,25 @@ body {
 .button:active {
 	position:relative;
 	top:1px;
+}
+
+.row {
+    color:white;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+.headshots{
+    border-radius: 50%;
 }
