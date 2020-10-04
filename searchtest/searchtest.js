@@ -13,15 +13,60 @@ window.onload = function() {
 
 
 function test() {
-    console.log("test");
+    // console.log("test");
 
-    const newDiv = document.createElement("div");
+    // const newDiv = document.createElement("div");
 
-    // and give it some content 
-    const newContent = document.createTextNode(document.getElementById("searchQuery").value);
+    // // and give it some content 
+    // const newContent = document.createTextNode(document.getElementById("searchQuery").value);
 
-    // add the text node to the newly created div
-    newDiv.appendChild(newContent);
+    // // add the text node to the newly created div
+    // newDiv.appendChild(newContent);
 
-    document.body.appendChild(newDiv);
+    // document.body.appendChild(newDiv);
+
+    let url = "https://api.data.charitynavigator.org/v2/Organizations?app_id=6bc7d517&app_key=bcbe2cb9afdc06da18174357c62decb2&search=convoy+of+hope"
+    fetch(url)
+
+    .then(res => res.json())
+        .then((out) => {
+            //console.log('Checkout this JSON! ', out);
+            if (out.length <= 0) {
+                const newDiv = document.createElement("div");
+                const newContent = document.createTextNode("Sorry, no charity like that was found.");
+                newDiv.appendChild(newContent);
+                document.body.appendChild(newDiv);
+            }
+
+            for (let i = 0; i < out.length; i++) {
+                if (out[i].mission != null &&
+                    out[i].websiteURL != null) {
+                    let newDiv = document.createElement("div");
+                    newDiv.className = "result"
+                    let name = document.createElement("p");
+                    let namet = document.createTextNode(out[i].charityName);
+                    let mission = document.createElement("p");
+                    let missiont = document.createTextNode(out[i].mission)
+                    let website = document.createElement("a");
+                    let websitet = document.createTextNode(out[i].websiteURL);
+                    website.href = out[i].websiteURL;
+                    name.appendChild(namet);
+                    mission.appendChild(missiont);
+                    website.appendChild(websitet);
+                    newDiv.appendChild(name);
+                    newDiv.appendChild(mission);
+                    newDiv.appendChild(website);
+                    document.body.appendChild(newDiv);
+                }
+            }
+            return;
+        })
+        .catch(err => {
+            throw err
+            const newDiv = document.createElement("div");
+            const newContent = document.createTextNode("Sorry, something went wrong.");
+            newDiv.appendChild(newContent);
+            document.body.appendChild(newDiv);
+            return;
+        });
 }

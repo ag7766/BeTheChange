@@ -33,3 +33,10 @@ body {
     cursor: pointer;
     font-size: 15px;
 }
+
+.result {
+    display: block;
+    border: 5px solid darkgreen;
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px;
+}
