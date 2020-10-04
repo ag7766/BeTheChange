@@ -13,19 +13,14 @@ window.onload = function() {
 
 
 function test() {
-    // console.log("test");
 
-    // const newDiv = document.createElement("div");
 
-    // // and give it some content 
-    // const newContent = document.createTextNode(document.getElementById("searchQuery").value);
+    const elements = document.getElementsByClassName("result");
+    for (let i = elements.length - 1; i >= 0; i--) {
+        elements[i].parentNode.removeChild(elements[i]);
+    }
 
-    // // add the text node to the newly created div
-    // newDiv.appendChild(newContent);
-
-    // document.body.appendChild(newDiv);
-
-    let url = "https://api.data.charitynavigator.org/v2/Organizations?app_id=6bc7d517&app_key=bcbe2cb9afdc06da18174357c62decb2&search=convoy+of+hope"
+    let url = "https://api.data.charitynavigator.org/v2/Organizations?app_id=6bc7d517&app_key=bcbe2cb9afdc06da18174357c62decb2&search=" + document.getElementById("searchQuery").value;
     fetch(url)
 
     .then(res => res.json())
@@ -62,9 +57,9 @@ function test() {
             return;
         })
         .catch(err => {
-            throw err
+            // throw err
             const newDiv = document.createElement("div");
-            const newContent = document.createTextNode("Sorry, something went wrong.");
+            const newContent = document.createTextNode("Sorry, no charity like that was found.");
             newDiv.appendChild(newContent);
             document.body.appendChild(newDiv);
             return;
