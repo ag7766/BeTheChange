@@ -25,6 +25,10 @@ body {
     margin-top: 100px;
 }
 
+.dropdown-item:hover {
+    color: #d36305;
+}
+
 #mainNavbar .navbar-brand {
     color: #f8b310;
     font-size: 1.5rem;
